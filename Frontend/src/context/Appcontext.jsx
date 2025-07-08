@@ -11,7 +11,7 @@ const AppcontextProvider = (props) => {
   const [showLogin, setShowLogin] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [credit, setCredit] = useState(0);
-  const [loadingUser, setLoadingUser] = useState(true); // ✅ add loading state
+  const [loadingUser, setLoadingUser] = useState(true);
 
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const AppcontextProvider = (props) => {
         headers: { token },
       });
 
-      console.log("Credits API Response:", data); // ✅ Debug log
+      console.log("Credits API Response:", data);
 
       if (data.success) {
         setCredit(data.credit);
@@ -34,7 +34,7 @@ const AppcontextProvider = (props) => {
       console.error("Credits Error:", error);
       toast.error(error.response?.data?.message || error.message);
     } finally {
-      setLoadingUser(false); // ✅ mark loading complete
+      setLoadingUser(false);
     }
   };
 
